@@ -253,6 +253,8 @@ for Logger level to be set at info, for example.
    yarn dev
    ```
 
+   On Windows, development defaults to Webpack for stability. To force a bundler explicitly, set `CALCOM_NEXT_DEV_BUNDLER` to `turbopack` or `webpack` before running `yarn dev`.
+
 #### Setting up your first user
 
 ##### Approach 1
