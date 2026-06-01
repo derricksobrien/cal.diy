@@ -237,6 +237,13 @@ const nextConfig = (phase: string): NextConfig => {
       optimizePackageImports: ["@calcom/ui"],
     },
     productionBrowserSourceMaps: true,
+    webpack: (config, { dev }) => {
+      if (dev) {
+        config.cache = false;
+      }
+
+      return config;
+    },
     transpilePackages: [
       "@calcom/app-store",
       "@calcom/dayjs",
