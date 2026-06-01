@@ -1,1 +1,0 @@
-@goto #_undefined_# 2>NUL || @title %COMSPEC% & @setlocal & @"C:\Program Files\nodejs\node.exe" "C:\Program Files\nodejs\node_modules\corepack\dist\yarn.js" "run" %*

@@ -1,1 +1,0 @@
-@goto #_undefined_# 2>NUL || @title %COMSPEC% & @setlocal & @"C:\Program Files\nodejs\node.exe" "C:\code\nexetra-calendar\cal.diy\packages\prisma\run-enum-generator.js" %*

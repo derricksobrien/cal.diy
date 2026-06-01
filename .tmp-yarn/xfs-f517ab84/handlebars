@@ -1,2 +1,0 @@
-#!/bin/sh
-exec "C:\Program Files\nodejs\node.exe" 'C:\code\nexetra-calendar\cal.diy\node_modules\handlebars\bin\handlebars' "$@"
