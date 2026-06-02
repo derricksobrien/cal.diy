@@ -27,10 +27,14 @@ const IS_EMBED_TEST = process.argv.some((a) => a.startsWith("--project=@calcom/e
 const IS_EMBED_REACT_TEST = process.argv.some((a) => a.startsWith("--project=@calcom/embed-react"));
 
 // Suppress all webServer logs to reduce noise during E2E tests
+const useDevWebServer = process.env.PLAYWRIGHT_USE_DEV_SERVER === "1";
+const webAppServerCommand = useDevWebServer
+  ? "yarn workspace @calcom/web copy-app-store-static && NEXT_PUBLIC_IS_E2E=1 NODE_OPTIONS='--dns-result-order=ipv4first --max-old-space-size=12288' yarn workspace @calcom/web dev -p 3000"
+  : "yarn workspace @calcom/web copy-app-store-static && NEXT_PUBLIC_IS_E2E=1 NODE_OPTIONS='--dns-result-order=ipv4first' yarn workspace @calcom/web start -p 3000";
+
 const webServer: PlaywrightTestConfig["webServer"] = [
   {
-    command:
-      "yarn workspace @calcom/web copy-app-store-static && NEXT_PUBLIC_IS_E2E=1 NODE_OPTIONS='--dns-result-order=ipv4first' yarn workspace @calcom/web start -p 3000",
+    command: webAppServerCommand,
     port: 3000,
     timeout: 60_000,
     reuseExistingServer: !process.env.CI,

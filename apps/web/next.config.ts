@@ -263,6 +263,9 @@ const nextConfig = (phase: string): NextConfig => {
     images: {
       unoptimized: true,
     },
+    typescript: {
+      ignoreBuildErrors: process.env.CALCOM_IGNORE_BUILD_TYPE_ERRORS === "1",
+    },
     turbopack: {},
     async rewrites() {
       const { orgSlug } = nextJsOrgRewriteConfig;
